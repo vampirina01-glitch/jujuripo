@@ -1,0 +1,24 @@
+{
+  "name": "madgic-boutique",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Madgic — boutique mobile-first de produits digitaux autour de l'IA.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource-variable/lora": "^5.3.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.1.7"
+  }
+}
