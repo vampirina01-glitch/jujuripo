@@ -10,7 +10,7 @@ export default function Dialog({ children, titleId, className = '', onClose }) {
     const overflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     const node = ref.current;
-    const focusables = () => [...node.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select, textarea, [tabindex="0"]')]
+    const focusables = () => [...node.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select, textarea, video[controls], summary, [tabindex="0"]')]
       .filter((element) => element.getClientRects().length > 0);
     (node.querySelector('[data-autofocus]') || focusables()[0] || node)?.focus();
 

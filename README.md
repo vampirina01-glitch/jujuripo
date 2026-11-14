@@ -10,7 +10,7 @@ Madgic vend **de l’information organisée**, pas un abonnement logiciel :
 2. Les avantages : plusieurs IA et un agent derrière un accès officiel gratuit.
 3. Le contenu payant : prise en main, conditions, exemples, 25 prompts et plan sur 7 jours.
 
-Le nom et l’adresse de la plateforme sont volontairement absents de la vitrine, des métadonnées, des messages de partage, de la commande et de l’extrait public. Ils sont expliqués dans le guide complet. L’offre publique reste honnête : l’accès à l’outil est gratuit selon les conditions et quotas de son éditeur ; le guide, lui, est payant. « Gratuit » ne signifie pas « illimité ».
+Le nom et l’adresse de la plateforme sont volontairement absents de la vitrine, des métadonnées, des messages de partage, de la commande et des vidéos publiques. Aucun PDF du guide n’est public. Ces informations sont expliquées uniquement dans le guide complet livré après vérification du paiement. L’offre publique reste honnête : l’accès à l’outil est gratuit selon les conditions et quotas de son éditeur ; le guide, lui, est payant. « Gratuit » ne signifie pas « illimité ».
 
 ## Démarrer
 
@@ -41,7 +41,7 @@ Le paiement est **manuel**, sans API bancaire intégrée :
 2. Il règle auprès du vendeur et conserve sa preuve.
 3. Il transmet la preuve par WhatsApp.
 4. Le vendeur vérifie la réception réelle des fonds.
-5. Le vendeur envoie le guide et les bonus.
+5. Le vendeur envoie le guide et les bonus. Le bouton WhatsApp ne débloque aucun fichier automatiquement.
 
 ## Produit numérique
 
@@ -53,7 +53,7 @@ Dans cet espace de travail, le dossier ignoré `private-products/` contient :
 - `scripts-videos-madgic.md` ;
 - `generate_guide.py` — source de génération privée.
 
-Ne placez jamais le PDF complet dans `public/` et ne le publiez pas dans un dépôt public. Seul `public/extrait-madgic.pdf` est public. Le dossier privé n’est pas transféré par GitHub : conservez une copie privée des fichiers livrés au client.
+Ne placez jamais le PDF complet dans `public/` et ne le publiez pas dans un dépôt public. Aucun extrait PDF n’est servi publiquement : la présentation publique passe par les vidéos. Le dossier privé n’est pas transféré par GitHub : conservez une copie privée des fichiers livrés au client.
 
 Régénération dans l’espace de travail actuel :
 
@@ -68,6 +68,17 @@ python3 -m venv .venv
 
 Direction éditoriale : papier clair, vert profond, typographie Lora/Inter, couverture typographique du vrai guide. Pas de décor lumineux générique ni de fausse capture de logiciel. Les images sont générées de façon reproductible par `scripts/design_assets.py`.
 
+Animations : apparition au défilement, barre de progression de lecture, compteurs animés, légère inclinaison de la couverture au pointeur, transitions de FAQ/modales et deux vidéos muettes de présentation. Les mouvements respectent `prefers-reduced-motion` et les vidéos ne se lancent qu’après une action explicite.
+
+Régénérer les vidéos publiques :
+
+```bash
+.venv/bin/pip install -r requirements-video.txt
+.venv/bin/python scripts/generate_videos.py
+```
+
+Les vidéos montrent le problème, la proposition et le parcours de commande, jamais le nom, l’adresse, l’écran de la plateforme ni une page du guide payé.
+
 ## Vérifier
 
 ```bash
@@ -76,7 +87,7 @@ npm run build
 .venv/bin/python scripts/check_public_surface.py
 ```
 
-Le contrôle public vérifie les textes, le build, les 4 pages de l’extrait, ses métadonnées et ses liens. Il ne remplace pas une relecture humaine avant publication.
+Le contrôle public vérifie les textes, le build, les vidéos de présentation et l’absence de tout PDF public du guide. Il ne remplace pas une relecture humaine avant publication.
 
 ## Déployer
 
@@ -97,8 +108,8 @@ src/App.jsx                    vitrine et parcours d’achat
 src/components/                commande, FAQ, partage, configuration vendeur
 src/lib/                       logique de commande et réglages locaux
 public/madgic-config.json      configuration publique vide par défaut
-public/extrait-madgic.pdf      extrait public sans identité de la plateforme
-public/images/                 couverture et carte de partage
+public/videos/                 vidéos publiques muettes, sans identité de la plateforme
+public/images/                 couverture, carte de partage et affiches vidéo
 scripts/                       génération visuelle et contrôle public
 private-products/              produit payé et source privée, ignorés par Git
 tests/                         logique métier et contrôle de la surface publique

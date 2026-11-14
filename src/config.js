@@ -17,7 +17,6 @@ export const shopConfig = {
     pages: '25 pages',
     prompts: 25,
     cover: '/images/guide-cover.webp',
-    sampleUrl: '/extrait-madgic.pdf',
     delivery: 'Guide PDF et bonus envoyés par WhatsApp après vérification du paiement',
   },
 

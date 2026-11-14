@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
-import { ArrowRight, Check, Copy, MessageCircle, ShieldCheck, Smartphone, X } from 'lucide-react';
+import { ArrowRight, Check, Copy, MessageCircle, Play, ShieldCheck, Smartphone, X } from 'lucide-react';
 import Dialog from './Dialog.jsx';
 import { buildWhatsAppUrl, createOrderReference, digitsOnly, getEnabledPayments, isPaymentConfigured, isDemoNumber, hasDemoNumbers } from '../lib/order.js';
 
-export default function CheckoutModal({ config, onClose, notify, onConfigure }) {
+export default function CheckoutModal({ config, onClose, notify, onConfigure, onWatch }) {
   const methods = useMemo(() => getEnabledPayments(config), [config]);
   const [selectedKey, setSelectedKey] = useState(methods[0]?.key || 'mtn');
   const [reference] = useState(() => createOrderReference());
@@ -63,8 +63,8 @@ export default function CheckoutModal({ config, onClose, notify, onConfigure }) 
         </div>
       ) : (
         <div className="checkout__instructions">
-          <p className="section__lead">Les coordonnées de paiement ne sont pas encore disponibles. Aucun règlement ne doit être envoyé pour le moment. Vous pouvez déjà consulter l’extrait gratuit du guide.</p>
-          <a className="text-link" href={config.product.sampleUrl} target="_blank" rel="noopener noreferrer" style={{ marginTop: 14 }}>Lire l’extrait gratuit <ArrowRight size={16} aria-hidden="true" /></a>
+          <p className="section__lead">Les coordonnées de paiement ne sont pas encore disponibles. Aucun règlement ne doit être envoyé pour le moment. Vous pouvez regarder la présentation publique ; le guide complet reste privé jusqu’à la vérification du paiement.</p>
+          {onWatch && <button type="button" className="text-link" onClick={onWatch} style={{ marginTop: 14 }}><Play size={16} aria-hidden="true" /> Regarder la présentation</button>}
         </div>
       )}
       {import.meta.env.DEV && !configured && (

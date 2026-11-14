@@ -49,6 +49,15 @@ test('l’offre vend explicitement un guide, pas un accès logiciel', () => {
   assert.equal(config.product.pages, '25 pages');
   assert.equal(config.product.prompts, 25);
   assert.match(config.product.delivery, /Guide PDF/);
+  assert.equal(config.product.sampleUrl, undefined);
+});
+
+test('aucun PDF du guide n’est public et les vidéos de présentation existent', () => {
+  const publicFiles = files('public');
+  assert.equal(publicFiles.some((path) => path.endsWith('.pdf')), false);
+  for (const path of ['public/videos/presentation-madgic.mp4', 'public/videos/commande-madgic.mp4', 'public/images/video-presentation.jpg', 'public/images/video-commande.jpg']) {
+    assert.ok(existsSync(join(root, path)), `Missing public teaser asset: ${path}`);
+  }
 });
 
 test('le message de commande reste centré sur le guide et sans URL externe', () => {

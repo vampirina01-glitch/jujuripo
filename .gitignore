@@ -6,6 +6,8 @@ dist/
 !.env.example
 .DS_Store
 *.log
+__pycache__/
+*.pyc
 
 # Produit payé : ne pas publier le PDF complet ni sa source dans un dépôt public.
 # Les fichiers restent dans l'espace de travail et sont livrés au vendeur.

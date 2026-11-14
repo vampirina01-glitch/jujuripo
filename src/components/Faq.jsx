@@ -16,7 +16,7 @@ const items = [
   },
   {
     q: 'Comment vais-je trouver l’outil ?',
-    a: 'La page publique présente les usages et le contenu, sans afficher le nom de la plateforme. Le guide contient son nom, son adresse officielle et les étapes pour y accéder. Vous n’avez pas à acheter un compte supplémentaire auprès de Madgic.',
+    a: 'La page publique et les vidéos présentent les usages, sans afficher le nom ni l’adresse de la plateforme. Après vérification manuelle de votre paiement, le vendeur vous envoie le guide complet : c’est là que se trouvent son nom, son adresse officielle et les étapes pour y accéder. Vous n’avez pas à acheter un compte supplémentaire auprès de Madgic.',
   },
   {
     q: 'Est-ce adapté si je débute ?',
